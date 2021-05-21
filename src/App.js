@@ -15,39 +15,24 @@ function App() {
   function handleClick(){
     let newTodos = [...todos]
     let newObj = {
-      task: task,
-      id: 1
+      task: task
     }
     newTodos.push(newObj)
     setTodos(newTodos)
   }
 
-  function changeStatus(id){
-    let newTodos = todos.map(item => {
-      if(item.id === id){
-        item.status = !item.status
-      }
-      return item
-    })
-
-    setTodos(newTodos)
-  }
-
-  function handleDelete(id){
-    console.log(id)
-  }
-
   return (
     <div className="app.js">
+      <h1>Hello World</h1>
       <AddTodo 
         handleClick={handleClick}
         onChangeInput={onChangeInput}
       />
       <TodoList 
+        randomValue="Kubat" 
         todos={todos}
-        changeStatus={changeStatus}
-        handleDelete={handleDelete}
       />
+      <h2>Hello</h2>
     </div>
   )
 }
