@@ -1,15 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 const AddTodo = (props) => {
+
+    const [task, setTask] = useState('');
+
     const handleInput = (e) => {
-        props.onChangeInput(e.target.value)
+        setTask(e.target.value)
+    }
+
+    const handleAdd = () => {
+        const newTask = {
+            task,
+            status: false,
+            id: Date.now()
+        }
+        props.handleTask(newTask)
+        setTask('')
     }
 
     return (
         <>
-        <input onChange={handleInput} type="text"/>
-        <button onClick={props.handleClick} className="btn">Add task</button>
+        <input value={task} onChange={handleInput} type="text"/>
+        <button onClick={handleAdd}>Add task</button>
         </>
     );
 };

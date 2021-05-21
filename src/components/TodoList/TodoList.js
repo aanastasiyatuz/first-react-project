@@ -1,13 +1,24 @@
 //rsc
 
 import React from 'react';
-import './TodoList.css';
 
 const TodoList = (props) => {
+    let style = {
+        color: "red",
+        listStyleType: 'none'
+    }
+
     return (
-        <ul className="todo-list">
-            {props.todos.map((item, index) => (
-                <li className="list-item" key={index + 'task'}>{item.task}</li>
+        <ul style={style}>
+            {props.todos.map(item => (
+                <li key={item.id} className={item.status ? 'completed' : ''}>
+                    <input
+                        onChange={() => props.changeStatus(item.id)}
+                        type="checkbox"
+                    />
+                    {item.task}
+                    <button>&times;</button>                
+                </li>
             ))}
         </ul>
     );
